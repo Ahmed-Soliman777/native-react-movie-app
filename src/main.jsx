@@ -6,12 +6,17 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 // import 'react-bootstrap/dist/react-bootstrap.min.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FavoritesProvider } from './components/Context.jsx'
+import { Provider } from 'react-redux'
+import { store } from './redux/store.js'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <FavoritesProvider>
+    <Provider store={store}>
       <App />
-    </FavoritesProvider>
+    </Provider>
   </StrictMode>,
 )
+
+{/* <FavoritesProvider> */}
+{/* </FavoritesProvider> */}
