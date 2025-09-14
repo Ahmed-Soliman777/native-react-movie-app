@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FavoritesContext } from './Context'
+import { useSelector } from 'react-redux'
 
 export default function Navbar() {
-    const { favorites } = useContext(FavoritesContext)
+    // const { favorites } = useContext(FavoritesContext)
+    const favorites = useSelector((state) => state.favorites.items)
     return (
         <div className="bg-amber-100">
             <div className='flex  py-2 mx-10 items-center '>

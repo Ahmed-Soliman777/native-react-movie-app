@@ -1,12 +1,13 @@
-import { useContext } from "react";
-import { FavoritesContext } from "../components/Context";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeFavorite } from "../redux/slices/favoritesSlice";
 
 export default function Favorites() {
-  const { favorites, removeFavorite } = useContext(FavoritesContext);
+  const dispatch = useDispatch();
+
+  const favorites = useSelector((state) => state.favorites.items);
 
   console.log(favorites);
-  
 
   return (
     <div className="">
@@ -22,13 +23,15 @@ export default function Favorites() {
                   className="mx-auto"
                 />
                 <h1 className="text-center">{movie.title || movie.name}</h1>
+
                 <button
                   className="btn btn-danger w-full"
-                  onClick={() => removeFavorite(movie.id)}
+                  onClick={() => dispatch(removeFavorite(movie.id))}
                 >
                   <i className="fa-solid fa-trash "></i>
                   Remove
                 </button>
+
                 <Link
                   className="btn btn-warning my-3 w-full"
                   to={`/details/${movie.id}`}
